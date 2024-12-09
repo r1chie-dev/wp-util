@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="https://store-demo-staging.sunpics.online/wp-content/uploads/2021/04/favicon-16x16-1.png" sizes="192x192">
+
+    <link rel="stylesheet" href="assets/css/global.css">
+
+    <script src="assets/js/util/global-util.js"></script>
+    <script src="assets/js/components/clients.js"></script>
+    <script src="assets/js/components/pages.js"></script>
+    <script src="assets/js/global.js"></script>
+
+    <title>WP UTIL</title>
+</head>
+<body>
+    <div class="form-wrapper">
+        <span class="material-icons">find_in_page</span>
+
+        <div>
+            <label>Client</label>
+            <select id="clients-select" mame="clients-select" class="clients-select"></select>
+        </div>
+
+        <div>
+            <label>Page</label>
+            <select id="pages-select" mame="pages-select" class="pages-select"></select>
+        </div>
+
+        <div class="id-to-search-wrap hidden">
+            <label>ID</label>
+            <input type="text" id="id-to-search" class="id-to-search" value="" />
+        </div>
+
+        <button type="button" class="open-client-page">OPEN</button>
+    </div>
+
+    <div class="screenMode">
+        <span class="material-icons md-48">lightbulb</span>
+    </div>
+</body>
+</html>
