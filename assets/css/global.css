@@ -127,3 +127,9 @@ div.form-wrapper div input:focus {
 .darkMode {
     background-color: var(--text-color);
 }
+
+@media ( max-width: 550px ) {
+    .screenMode {
+        left: auto;
+    }
+}
