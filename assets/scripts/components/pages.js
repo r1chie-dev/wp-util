@@ -22,12 +22,13 @@ class Pages {
     ]
   }
   
+  util  = new GlobalUtil();
   alert = new Alert();
 
   buildHtml() {
     let selectHtml = "";
         
-    $.each( this.options, ( pageType, pages ) => {
+    $.each( this.util.getPages(), ( pageType, pages ) => {
         selectHtml += "<optgroup label='" + pageType + "'>";
 
         $.each( pages, ( index, page ) => {
