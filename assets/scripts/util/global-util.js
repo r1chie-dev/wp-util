@@ -1,5 +1,6 @@
 class GlobalUtil {
 
+    htmlElement         = "html";
     bodyElement         = "body";
     clickEvent          = "click";
     buttonElement       = ".open-client-page";

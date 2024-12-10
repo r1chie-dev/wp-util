@@ -19,10 +19,10 @@ class Global {
         $( global.util.bulbModeIcon ).on( global.util.clickEvent, ( event ) => {
             if ( $( event.currentTarget ).hasClass( global.util.lightOnClass ) ) {
                 $( event.currentTarget ).removeClass( global.util.lightOnClass );
-                $( global.util.bodyElement ).removeClass( global.util.darkModeClass );
+                $( global.util.htmlElement + ", " +  global.util.bodyElement ).removeClass( global.util.darkModeClass );
             } else {
                 $( event.currentTarget ).addClass( global.util.lightOnClass );
-                $( global.util.bodyElement ).addClass( global.util.darkModeClass );
+                $( global.util.htmlElement + ", " +  global.util.bodyElement ).addClass( global.util.darkModeClass );
             }
         });
     }
