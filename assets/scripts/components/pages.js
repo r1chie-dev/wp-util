@@ -21,6 +21,8 @@ class Pages {
       { name: "My Account",   redirect: "my-account/",            value:"account" }
     ]
   }
+  
+  alert = new Alert();
 
   buildHtml() {
     let selectHtml = "";
@@ -54,18 +56,22 @@ class Pages {
 
       if ( idToSearchElement.is( global.util.visibleSelector ) ) {
           if ( $( global.util.idSearchInput ).val() !== "" ) {
-              pageUrl = this.replaceRedirectId( pageUrl, $( global.util.idSearchInput ).val() );
+            pageUrl = this.replaceRedirectId( pageUrl, $( global.util.idSearchInput ).val() );
           } else {
-              alert( global.util.alerts.noId );
-              return false;
+            this.alert.defaultAlert( "noID", "error" );
+            return false;
           }
       }
 
-      window.open( clientUrl + pageUrl, global.util.newTabEvent );
+      this.alert.autoClose( "openLink", () => this.openLink( clientUrl + pageUrl ) );
     } );
   }
 
   replaceRedirectId( url, id ) {
       return url.replace( "{0}", id );
+  }
+
+  openLink( link ) {
+    window.open( link, global.util.newTabEvent );
   }
 }

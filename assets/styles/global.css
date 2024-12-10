@@ -132,6 +132,10 @@ div.form-wrapper div input:focus {
     background-color: var(--text-color);
 }
 
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: var(--primary-color) !important;
+}
+
 @media ( max-width: 550px ) {
     .screenMode {
         left: auto;
