@@ -40,6 +40,10 @@ select {
     text-transform: uppercase;
 }
 
+select:focus {
+    outline: none;
+}
+
 .form-wrapper {
     width: 500px;
     display: flex;
