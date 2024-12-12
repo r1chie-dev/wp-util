@@ -11,7 +11,7 @@ class GlobalUtil {
     darkModeClass       = "darkMode";
     newTabEvent         = "_blank";
     changeEvent         = "change";
-    optionForIdSearch   = [ "editProduct", "editOrder" ];
+    optionForIdSearch   = [ "editProduct", "editOrder", "editExtraPages", "editBoxExtraPages" ];
     redirectData        = "redirect";
     hiddenClass         = "hidden";
     idSearchWrap        = ".id-to-search-wrap";
@@ -22,18 +22,22 @@ class GlobalUtil {
     getPages() {
         return {
             Admin: [
-              { name: "Admin",            redirect: "wp-admin/",                                                                        value: "admin" },
-              { name: "Custom Fields",    redirect: "wp-admin/admin.php?page=wapf-field-groups",                                        value: "customFields" },
-              { name: "New Custom Field", redirect: "wp-admin/post-new.php?post_type=wapf_product",                                     value: "newCustomField" },
-              { name: "Extra Pages",      redirect: "wp-admin/admin.php?page=wapf-field-groups&extra_pages=true",                       value: "extraPages" },
-              { name: "Box Extra Pages",  redirect: "wp-admin/admin.php?page=wapf-field-groups&extra_pages=true&extra_pages_type=box",  value: "boxExtraPages" },
-              { name: "Products",         redirect: "wp-admin/edit.php?post_type=product",                                              value: "products" },
-              { name: "New Product",      redirect: "wp-admin/post-new.php?post_type=product",                                          value: "newProduct" },
-              { name: "Edit Product",     redirect: "wp-admin/post.php?post={0}&action=edit",                                           value: "editProduct" },
-              { name: "Coupons",          redirect: "wp-admin/edit.php?post_type=shop_coupon",                                          value: "coupons" },
-              { name: "New Coupon",       redirect: "wp-admin/post-new.php?post_type=shop_coupon",                                      value: "newCoupon" },
-              { name: "Orders",           redirect: "wp-admin/edit.php?post_type=shop_order",                                           value: "orders" },
-              { name: "See Order",        redirect: "wp-admin/post.php?post={0}&action=edit",                                           value: "editOrder" }
+              { name: "Admin",                redirect: "wp-admin/",                                                                            value: "admin" },
+              { name: "Custom Fields",        redirect: "wp-admin/admin.php?page=wapf-field-groups",                                            value: "customFields" },
+              { name: "New Custom Field",     redirect: "wp-admin/post-new.php?post_type=wapf_product",                                         value: "newCustomField" },
+              { name: "Extra Pages",          redirect: "wp-admin/admin.php?page=wapf-field-groups&extra_pages=true",                           value: "extraPages" },
+              { name: "New Extra Pages",      redirect: "wp-admin/post-new.php?post_type=wapf_product&field=extrapages",                        value: "newExtraPages" },
+              { name: "Edit Extra Pages",     redirect: "wp-admin/post.php?post={0}&action=edit&field=extrapages",                              value: "editExtraPages" },
+              { name: "Box Extra Pages",      redirect: "wp-admin/admin.php?page=wapf-field-groups&extra_pages=true&extra_pages_type=box",      value: "boxExtraPages" },
+              { name: "New Box Extra Pages",  redirect: "wp-admin/post-new.php?post_type=wapf_product&field=extrapages&extra_pages_type=box",   value: "newBoxExtraPages" },
+              { name: "Edit Box Extra Pages", redirect: "wp-admin/post.php?post={0}&action=edit&field=extrapages&extra_pages_type=box",         value: "editBoxExtraPages" },
+              { name: "Products",             redirect: "wp-admin/edit.php?post_type=product",                                                  value: "products" },
+              { name: "New Product",          redirect: "wp-admin/post-new.php?post_type=product",                                              value: "newProduct" },
+              { name: "Edit Product",         redirect: "wp-admin/post.php?post={0}&action=edit",                                               value: "editProduct" },
+              { name: "Coupons",              redirect: "wp-admin/edit.php?post_type=shop_coupon",                                              value: "coupons" },
+              { name: "New Coupon",           redirect: "wp-admin/post-new.php?post_type=shop_coupon",                                          value: "newCoupon" },
+              { name: "Orders",               redirect: "wp-admin/edit.php?post_type=shop_order",                                               value: "orders" },
+              { name: "See Order",            redirect: "wp-admin/post.php?post={0}&action=edit",                                               value: "editOrder" }
             ],
             Frontend: [
               { name: "Home",         redirect: "",                       value:"home" },
