@@ -44,7 +44,9 @@ class GlobalUtil {
               { name: "Cart",         redirect: "cart/",                  value:"cart" },
               { name: "Checkout",     redirect: "checkout/",              value:"checkout" },
               { name: "My Projects",  redirect: "my-account/myprojects/", value:"projects" },
-              { name: "My Account",   redirect: "my-account/",            value:"account" }
+              { name: "My Account",   redirect: "my-account/",            value:"account" },
+              { name: "Login",        redirect: "login/",                 value:"login" },
+              { name: "Registration", redirect: "registration/",          value:"registration" }
             ]
         }
     }
