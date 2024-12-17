@@ -54,21 +54,21 @@ class GlobalUtil {
     getClients() {
         return {
             Staging: [
-              { name: "Demo",                     value: "https://store-demo-staging.sunpics.online/" },
-              { name: "Demo Partner 2",           value: "https://store-demo-staging-2.sunpics.online/" },
-              { name: "Profox",                   value: "https://staging.profoxprofissional.com.br/" },
-              { name: "FotoGM",                   value: "https://store-fotogm-v1-staging.sunpics.online/" },
-              { name: "Albume ( Beeriprint )",    value: "https://store-beeriprint-v1-staging.sunpics.online/" },
-              { name: "Bepix",                    value: "https://staging.bepix.com.br/" }
+              { name: "Demo",             value: "https://store-demo-staging.sunpics.online/" },
+              { name: "Demo Partner 2",   value: "https://store-demo-staging-2.sunpics.online/" },
+              { name: "Profox",           value: "https://staging.profoxprofissional.com.br/" },
+              { name: "FotoGM",           value: "https://store-fotogm-v1-staging.sunpics.online/" },
+              { name: "Albume",           value: "https://store-beeriprint-v1-staging.sunpics.online/" },
+              { name: "Bepix",            value: "https://staging.bepix.com.br/" }
             ],
             Production: [
-              { name: "Demo",                     value: "https://store-demo.sunpics.online/" },
-              { name: "My Album ( Beeriprint )",  value: "https://store-beeri-myalbum-v1.sunpics.online/" },
-              { name: "Profox",                   value: "https://profoxprofissional.com.br/" },
-              { name: "FotoGM",                   value: "https://foto-gm.si/" },
-              { name: "Ceu-Azul",                 value: "https://ceu-azul.pt/" },
-              { name: "Albume ( Beeriprint )",    value: "https://new-store.albume.co.il/" },
-              { name: "Bepix",                    value: "https://bepix.com.br/" }
+              { name: "Demo",       value: "https://store-demo.sunpics.online/" },
+              { name: "My Album ",  value: "https://myalbum.co.il/" },
+              { name: "Profox",     value: "https://profoxprofissional.com.br/" },
+              { name: "FotoGM",     value: "https://foto-gm.si/" },
+              { name: "Ceu-Azul",   value: "https://ceu-azul.pt/" },
+              { name: "Albume",     value: "https://new-store.albume.co.il/" },
+              { name: "Bepix",      value: "https://bepix.com.br/" }
             ]
           }
     }
