@@ -1,11 +1,14 @@
 class Clients {
 
-  util = new GlobalUtil();
+  util    = new GlobalUtil();
+  cookies = new Cookies();
 
   //#region html
   buildTypesHtml() {        
     $.each( this.util.getClientsType(), ( index, type ) => {
-        $( this.util.clientsTypeSelect ).append("<option value='" + type.value + "'>" +  type.name + "</option>");
+        const selected = this.cookies.getCookiePropertie( this.util.cookieClientTypePropertie ) === type.value ? this.util.selectedAttribute : '';
+
+        $( this.util.clientsTypeSelect ).append("<option value='" + type.value + "' " + selected + ">" +  type.name + "</option>");
     } );
   }
 
@@ -15,16 +18,33 @@ class Clients {
     clientsSelect.empty();
 
     $.each( this.getClientObject( type ), ( index, client ) => {
-      clientsSelect.append( "<option value='" + client.value + "' data-redirect='" + client.redirect + "'>" +  client.name + "</option>" );
+      const selected = this.cookies.getCookiePropertie( this.util.cookieClientPropertie ) === client.value ? this.util.selectedAttribute : '';
+
+      clientsSelect.append( "<option value='" + client.value + "' data-redirect='" + client.redirect + "' " + selected + ">" +  client.name + "</option>" );
     } );
+
+    clientsSelect.change();
   }
   //#endregion
 
   //#region events
-  typeChange() {
+  clientTypeChange() {
     $( this.util.clientsTypeSelect ).on( this.util.changeEvent, ( event ) => {
-        this.buildHtml( $(event.currentTarget).val() );
+        const clientTypeSelected = $(event.currentTarget).val();
+
+        this.buildHtml( clientTypeSelected );
+
+        this.cookies.setCookiePropertie( this.util.cookieClientTypePropertie, clientTypeSelected );
+
+        // add event change
+        $( this.util.clientsSelect ).on( this.util.changeEvent, ( event ) => {
+          this.clientChange( $( event.currentTarget ).val() );
+        } );
     } );
+  }
+
+  clientChange( value ) {
+    this.cookies.setCookiePropertie( this.util.cookieClientPropertie, value );
   }
   //#endregion
 

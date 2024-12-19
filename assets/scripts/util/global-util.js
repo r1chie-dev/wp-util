@@ -1,27 +1,40 @@
 class GlobalUtil {
 
-    htmlElement                     = "html";
-    bodyElement                     = "body";
-    clickEvent                      = "click";
-    buttonElement                   = ".open-client-page";
-    pagesSelect                     = "#pages-select";
-    pagesTypeSelect                 = "#pages-type-select";
-    clientsSelect                   = "#clients-select";
-    clientsTypeSelect               = "#clients-type-select";
-    bulbModeIcon                    = ".screenMode span";
-    lightOnClass                    = "lightOn";
-    darkModeClass                   = "darkMode";
-    newTabEvent                     = "_blank";
-    changeEvent                     = "change";
-    optionForIdSearch               = [ "editProduct", "editOrder", "editExtraPages", "editBoxExtraPages" ];
-    redirectData                    = "redirect";
-    hiddenClass                     = "hidden";
-    idSearchWrap                    = ".id-to-search-wrap";
-    idSearchInput                   = ".id-to-search";
-    visibleSelector                 = ":visible";
-    optionSelected                  = "option:selected";
-    clientsTypeStg                  = "staging";
-    clientsTypeProd                 = "production";
+    // html
+    htmlElement = "html";
+    bodyElement = "body";
+    clickEvent  = "click";
+
+    // elements
+    buttonElement     = ".open-client-page";
+    pagesSelect       = "#pages-select";
+    pagesTypeSelect   = "#pages-type-select";
+    clientsSelect     = "#clients-select";
+    clientsTypeSelect = "#clients-type-select";
+    bulbModeIcon      = ".screenMode span";
+    idSearchWrap      = ".id-to-search-wrap";
+    idSearchInput     = ".id-to-search";
+
+    // selectors
+    lightOnClass      = "lightOn";
+    darkModeClass     = "darkMode";
+    changeEvent       = "change";
+    keyupEvent        = "keyup";
+    redirectData      = "redirect";
+    hiddenClass       = "hidden";
+    visibleSelector   = ":visible";
+    selectedAttribute = "selected";
+    optionSelected    = "option:selected";
+
+    // util
+    optionForIdSearch = [ "editProduct", "editOrder", "editExtraPages", "editBoxExtraPages" ];
+    newTabEvent       = "_blank";
+    
+    // clients
+    clientsTypeStg  = "staging";
+    clientsTypeProd = "production";
+
+    // pages
     pagesTypeAdmin                  = "admin";
     pagesTypeFrontend               = "frontend";
     pagesTypeSunpicsAttributes      = "sunpicsAttributes";
@@ -29,14 +42,16 @@ class GlobalUtil {
     pagesTypeSunpicsGalleries       = "sunpicsGalleries";
     pagesTypeExtraPages             = "extraPages";
 
-    //#region gets
-    getClientsType() {
-      return [
-        { name: "Staging",    value: "staging" },
-        { name: "Production", value: "production" }
-      ];
-    }
+    // cookies
+    cookieUserConfig          = "userConfig";
+    cookieDarkModePropertie   = "darkMode";
+    cookieClientTypePropertie = "clientType";
+    cookieClientPropertie     = "client";
+    cookiePagePropertie       = "page";
+    cookiePageTypePropertie   = "pageType";
+    cookieIdSearchPropertie   = "idSearch";
 
+    //#region get pages
     getPagesType() {
       return [
         { name: "Admin",    value: "admin" },
@@ -49,21 +64,14 @@ class GlobalUtil {
     }
 
     getAllPages() {
-        return {
-            "Admin": this.getAdminPages(),
-            "Frontend": this.getFrontendPages(),
-            "Sunpics Attributes": this.getSunpicsAttributesPages(),
-            "Sunpics Configurations": this.getSunpicsConfigurationsPages(),
-            "Sunpics Galleries": this.getSunpicsGalleriesPages(),
-            "Extra Pages": this.getSunpicsExtraPagePages()
-        }
-    }
-
-    getAllClients() {
-        return {
-            "Staging": this.getStagingClients(),
-            "Production": this.getProductionClients()
-          }
+      return {
+          "Admin": this.getAdminPages(),
+          "Frontend": this.getFrontendPages(),
+          "Sunpics Attributes": this.getSunpicsAttributesPages(),
+          "Sunpics Configurations": this.getSunpicsConfigurationsPages(),
+          "Sunpics Galleries": this.getSunpicsGalleriesPages(),
+          "Extra Pages": this.getSunpicsExtraPagePages()
+      }
     }
 
     getAdminPages() {
@@ -146,28 +154,57 @@ class GlobalUtil {
         { name: "Edit Box Extra Pages", redirect: "wp-admin/post.php?post={0}&action=edit&field=extrapages&extra_pages_type=box",         value: "editBoxExtraPages" },
       ];
     }
+    //#endregion
+
+    //#region get clients
+    getClientsType() {
+      return [
+        { name: "Staging",    value: "staging" },
+        { name: "Production", value: "production" }
+      ];
+    }
+
+    getAllClients() {
+      return {
+          "Staging": this.getStagingClients(),
+          "Production": this.getProductionClients()
+        }
+    }
 
     getStagingClients() {
       return [
-        { name: "Demo",             value: "https://store-demo-staging.sunpics.online/" },
-        { name: "Demo Partner 2",   value: "https://store-demo-staging-2.sunpics.online/" },
-        { name: "Profox",           value: "https://staging.profoxprofissional.com.br/" },
-        { name: "FotoGM",           value: "https://store-fotogm-v1-staging.sunpics.online/" },
-        { name: "Albume",           value: "https://store-beeriprint-v1-staging.sunpics.online/" },
-        { name: "Bepix",            value: "https://staging.bepix.com.br/" }
+        { name: "Demo",             redirect: "https://store-demo-staging.sunpics.online/",           value: "demo" },
+        { name: "Demo Partner 2",   redirect: "https://store-demo-staging-2.sunpics.online/",         value: "demo2" },
+        { name: "Profox",           redirect: "https://staging.profoxprofissional.com.br/",           value: "profox" },
+        { name: "FotoGM",           redirect: "https://store-fotogm-v1-staging.sunpics.online/",      value: "fotogm" },
+        { name: "Albume",           redirect: "https://store-beeriprint-v1-staging.sunpics.online/",  value: "albume" },
+        { name: "Bepix",            redirect: "https://staging.bepix.com.br/",                        value: "bepix" }
       ];
     }
 
     getProductionClients() {
       return [
-        { name: "Demo",       value: "https://store-demo.sunpics.online/" },
-        { name: "My Album ",  value: "https://myalbum.co.il/" },
-        { name: "Profox",     value: "https://profoxprofissional.com.br/" },
-        { name: "FotoGM",     value: "https://foto-gm.si/" },
-        { name: "Ceu-Azul",   value: "https://ceu-azul.pt/" },
-        { name: "Albume",     value: "https://new-store.albume.co.il/" },
-        { name: "Bepix",      value: "https://bepix.com.br/" }
+        { name: "Demo",       redirect: "https://store-demo.sunpics.online/", value: "demo" },
+        { name: "My Album ",  redirect: "https://myalbum.co.il/",             value: "myalbum" },
+        { name: "Profox",     redirect: "https://profoxprofissional.com.br/", value: "profox" },
+        { name: "FotoGM",     redirect: "https://foto-gm.si/",                value: "fotogm" },
+        { name: "Ceu-Azul",   redirect: "https://ceu-azul.pt/",               value: "ceuazul" },
+        { name: "Albume",     redirect: "https://new-store.albume.co.il/",    value: "albume" },
+        { name: "Bepix",      redirect: "https://bepix.com.br/",              value: "bepix" }
       ];
+    }
+    //#endregion
+
+    //#region get cookies
+    getCookieDefault() {
+      return {
+        "darkMode":   false,
+        "clientType": "staging",
+        "client":     "demo",
+        "pageType":  "admin",
+        "page":       "admin",
+        "idSearch":   "",
+      };
     }
     //#endregion
 }

@@ -4,19 +4,29 @@ class Global {
     pages   = new Pages();
     clients = new Clients();
     alert   = new Alert();
+    cookies = new Cookies();
 
     constructor() {
         $(document).ready( () => {
+            this.initCookies();
             this.initDarkMode();
             this.initClientsType();
             this.initPagesType();
-
             this.openPageEvent();
         });
     }
 
     //#region init components
+    initCookies() {
+        this.cookies.initCookies();
+    }
+
     initDarkMode() {
+        if ( this.cookies.getCookiePropertie( "darkMode" ) ) {
+            $( this.util.bulbModeIcon ).addClass( this.util.lightOnClass );
+            $( this.util.htmlElement + ", " +  this.util.bodyElement ).addClass( this.util.darkModeClass );
+        } 
+        
         $( this.util.bulbModeIcon ).on( this.util.clickEvent, ( event ) => {
             if ( $( event.currentTarget ).hasClass( this.util.lightOnClass ) ) {
                 $( event.currentTarget ).removeClass( this.util.lightOnClass );
@@ -25,28 +35,24 @@ class Global {
                 $( event.currentTarget ).addClass( this.util.lightOnClass );
                 $( this.util.htmlElement + ", " +  this.util.bodyElement ).addClass( this.util.darkModeClass );
             }
+
+            this.cookies.setCookiePropertie( "darkMode", $( event.currentTarget ).hasClass( this.util.lightOnClass ) );
         });
     }
 
     initClientsType() {
-        // append options
         this.clients.buildTypesHtml();
 
-        // add event change
-        this.clients.typeChange();
+        this.clients.clientTypeChange();
 
-        // trigger change
         $( this.util.clientsTypeSelect ).change();
     }
 
     initPagesType() {
-        // append options
         this.pages.buildTypesHtml();
 
-        // add event change
-        this.pages.typeChange();
+        this.pages.pageTypeChange();
 
-        // trigger change
         $( this.util.pagesTypeSelect ).change();
     }
     //#endregion
@@ -55,7 +61,7 @@ class Global {
     openPageEvent() {
         $( this.util.buttonElement ).on( this.util.clickEvent, () => {
             const idToSearchElement = $( this.util.idSearchWrap );
-            const clientUrl         = $( this.util.clientsSelect ).val();
+            const clientUrl         = $( this.util.clientsSelect ).find( this.util.optionSelected ).data( this.util.redirectData );
             let   pageUrl           = $( this.util.pagesSelect ).find( this.util.optionSelected ).data( this.util.redirectData );
       
             if ( idToSearchElement.is( this.util.visibleSelector ) ) {

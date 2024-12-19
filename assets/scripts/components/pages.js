@@ -1,11 +1,14 @@
 class Pages {
     
-  util = new GlobalUtil();
+  util    = new GlobalUtil();
+  cookies = new Cookies();
 
   //#region html
   buildTypesHtml() {        
     $.each( this.util.getPagesType(), ( index, type ) => {
-        $( this.util.pagesTypeSelect ).append("<option value='" + type.value + "'>" +  type.name + "</option>");
+      const selected = this.cookies.getCookiePropertie( this.util.cookiePageTypePropertie ) === type.value ? this.util.selectedAttribute : '';
+
+      $( this.util.pagesTypeSelect ).append("<option value='" + type.value + "' " + selected + ">" +  type.name + "</option>");
     } );
   }
 
@@ -15,32 +18,51 @@ class Pages {
     pagesSelect.empty();
 
     $.each( this.getPageObject( type ), ( index, page ) => {
-      pagesSelect.append( "<option value='" + page.value + "' data-redirect='" + page.redirect + "'>" +  page.name + "</option>" );
-    } );
+      const selected = this.cookies.getCookiePropertie( this.util.cookiePagePropertie ) === page.value ? this.util.selectedAttribute : '';
 
-    pagesSelect.change();
+      pagesSelect.append( "<option value='" + page.value + "' data-redirect='" + page.redirect + "' " + selected + ">" +  page.name + "</option>" );
+    } );
   }
   //#endregion
 
   //#region events
-  typeChange() {
+  pageTypeChange() {
     $( this.util.pagesTypeSelect ).on( this.util.changeEvent, ( event ) => {
-        // append pages options
-        this.buildHtml( $(event.currentTarget).val() );
+      const pageTypeSelected = $(event.currentTarget).val();
 
-        // add event change
-        $( this.util.pagesSelect ).on( this.util.changeEvent, ( event ) => {
-          this.pageChange( $( event.currentTarget ).val() );
-        } );
+      this.buildHtml( pageTypeSelected );
+
+      this.cookies.setCookiePropertie( this.util.cookiePageTypePropertie, pageTypeSelected );
+
+      $( this.util.pagesSelect ).on( this.util.changeEvent, ( event ) => {
+        this.pageChange( $( event.currentTarget ).val() );
+      } ).change();
     } );
   }
 
   pageChange( value ) {
+    this.cookies.setCookiePropertie( this.util.cookiePagePropertie, value );
+    
+    this.toggleIdSearchField( value );
+  }
+
+  toggleIdSearchField( value ) {
     if ( $.inArray( value, this.util.optionForIdSearch ) !== -1  ) {
       $( this.util.idSearchWrap ).removeClass( this.util.hiddenClass );
+      $( this.util.idSearchInput ).val( this.cookies.getCookiePropertie( this.util.cookieIdSearchPropertie ) );
     } else {
-        $( this.util.idSearchWrap ).val("").addClass( this.util.hiddenClass );
+      $( this.util.idSearchWrap ).addClass( this.util.hiddenClass );
+        $( this.util.idSearchInput ).val("");
+        this.cookies.setCookiePropertie( this.util.cookieIdSearchPropertie, "" );
     }
+
+    this.idSearchChange();
+  }
+
+  idSearchChange() {
+    $( this.util.idSearchInput ).off( this.util.keyupEvent ).on( this.util.keyupEvent, ( event ) => {
+      this.cookies.setCookiePropertie( this.util.cookieIdSearchPropertie, $( event.currentTarget ).val() );
+    } );
   }
   //#endregion
   
