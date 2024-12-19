@@ -1,56 +1,85 @@
 class Pages {
     
-  util  = new GlobalUtil();
-  alert = new Alert();
+  util = new GlobalUtil();
 
-  buildHtml() {
-    let selectHtml = "";
-        
-    $.each( this.util.getPages(), ( pageType, pages ) => {
-        selectHtml += "<optgroup label='" + pageType + "'>";
-
-        $.each( pages, ( index, page ) => {
-            selectHtml += "<option value='" + page.value + "' data-redirect='" + page.redirect + "'>" +  page.name + "</option>";
-        } );
-
-        selectHtml += "</optgroup>";
+  //#region html
+  buildTypesHtml() {        
+    $.each( this.util.getPagesType(), ( index, type ) => {
+        $( this.util.pagesTypeSelect ).append("<option value='" + type.value + "'>" +  type.name + "</option>");
     } );
+  }
 
-    return selectHtml;
+  buildHtml( type ) {
+    const pagesSelect = $( this.util.pagesSelect );
+
+    pagesSelect.empty();
+
+    $.each( this.getPageObject( type ), ( index, page ) => {
+      pagesSelect.append( "<option value='" + page.value + "' data-redirect='" + page.redirect + "'>" +  page.name + "</option>" );
+    } );
+  }
+  //#endregion
+
+  //#region events
+  typeChange() {
+    $( this.util.pagesTypeSelect ).on( this.util.changeEvent, ( event ) => {
+        // append pages options
+        this.buildHtml( $(event.currentTarget).val() );
+
+        // add event change
+        $( this.util.pagesSelect ).on( this.util.changeEvent, ( event ) => {
+          this.pageChange( $( event.currentTarget ).val() );
+        } );
+    } );
   }
 
   pageChange( value ) {
-    if ( $.inArray( value, global.util.optionForIdSearch ) !== -1  ) {
-      $( global.util.idSearchWrap ).removeClass( global.util.hiddenClass );
+    if ( $.inArray( value, this.util.optionForIdSearch ) !== -1  ) {
+      $( this.util.idSearchWrap ).removeClass( this.util.hiddenClass );
     } else {
-        $( global.util.idSearchWrap ).val("").addClass( global.util.hiddenClass );
+        $( this.util.idSearchWrap ).val("").addClass( this.util.hiddenClass );
     }
   }
+  //#endregion
+  
+  //#region util
+  getPageObject( type ) {
+    let pages;
+    let allPages = this.util.getPages();
 
-  openPage() {
-    $( global.util.buttonElement ).on( global.util.clickEvent, () => {
-      const idToSearchElement = $( global.util.idSearchWrap );
-      const clientUrl         = $( global.util.clientsSelect ).val();
-      let   pageUrl           = $( global.util.pagesSelect ).find( global.util.optionSelected ).data( global.util.redirectData );
-
-      if ( idToSearchElement.is( global.util.visibleSelector ) ) {
-          if ( $( global.util.idSearchInput ).val() !== "" ) {
-            pageUrl = this.replaceRedirectId( pageUrl, $( global.util.idSearchInput ).val() );
-          } else {
-            this.alert.defaultAlert( "noID", "error" );
-            return false;
-          }
+    switch ( type ) {
+      case this.util.pagesTypeAdmin: {
+        pages = allPages["Admin"];
+        break;
       }
 
-      this.alert.autoClose( "openLink", () => this.openLink( clientUrl + pageUrl ) );
-    } );
-  }
+      case this.util.pagesTypeFrontend: {
+        pages = allPages["Frontend"];
+        break;
+      }
 
-  replaceRedirectId( url, id ) {
-      return url.replace( "{0}", id );
-  }
+      case this.util.pagesTypeSunpicsAttributes: {
+        pages = allPages["Sunpics Attributes"];
+        break;
+      }
 
-  openLink( link ) {
-    window.open( link, global.util.newTabEvent );
+      case this.util.pagesTypeSunpicsConfigurations: {
+        pages = allPages["Sunpics Configurations"];
+        break;
+      }
+
+      case this.util.pagesTypeSunpicsGalleries: {
+        pages = allPages["Sunpics Galleries"];
+        break;
+      }
+
+      case this.util.pagesTypeExtraPages: {
+        pages = allPages["Extra Pages"];
+        break;
+      }
+    }
+
+    return pages;
   }
+  //#endregion
 }

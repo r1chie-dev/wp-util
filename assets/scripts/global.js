@@ -3,47 +3,82 @@ class Global {
     util    = new GlobalUtil();
     pages   = new Pages();
     clients = new Clients();
+    alert   = new Alert();
 
     constructor() {
         $(document).ready( () => {
-            this.toggleDarkMode();
-
-            this.buildClientsComponent();
-            this.buildPagesComponent();
+            this.initDarkMode();
+            this.initClientsType();
+            this.initPagesType();
 
             this.openPageEvent();
         });
     }
 
-    toggleDarkMode() {
-        $( global.util.bulbModeIcon ).on( global.util.clickEvent, ( event ) => {
-            if ( $( event.currentTarget ).hasClass( global.util.lightOnClass ) ) {
-                $( event.currentTarget ).removeClass( global.util.lightOnClass );
-                $( global.util.htmlElement + ", " +  global.util.bodyElement ).removeClass( global.util.darkModeClass );
+    //#region init components
+    initDarkMode() {
+        $( this.util.bulbModeIcon ).on( this.util.clickEvent, ( event ) => {
+            if ( $( event.currentTarget ).hasClass( this.util.lightOnClass ) ) {
+                $( event.currentTarget ).removeClass( this.util.lightOnClass );
+                $( this.util.htmlElement + ", " +  this.util.bodyElement ).removeClass( this.util.darkModeClass );
             } else {
-                $( event.currentTarget ).addClass( global.util.lightOnClass );
-                $( global.util.htmlElement + ", " +  global.util.bodyElement ).addClass( global.util.darkModeClass );
+                $( event.currentTarget ).addClass( this.util.lightOnClass );
+                $( this.util.htmlElement + ", " +  this.util.bodyElement ).addClass( this.util.darkModeClass );
             }
         });
     }
 
-    buildClientsComponent() {
-        const clients = new Clients();
+    initClientsType() {
+        // append options
+        this.clients.buildTypesHtml();
 
-        $( global.util.clientsSelect ).append( clients.buildHtml() );
+        // add event change
+        this.clients.typeChange();
+
+        // trigger change
+        $( this.util.clientsTypeSelect ).change();
     }
 
-    buildPagesComponent() {
-        $( global.util.pagesSelect )
-            .append( global.pages.buildHtml() )
-            .on( global.util.changeEvent, ( event ) => {
-                global.pages.pageChange( $( event.currentTarget ).val() );
-            } );
-    }
+    initPagesType() {
+        // append options
+        this.pages.buildTypesHtml();
 
+        // add event change
+        this.pages.typeChange();
+
+        // trigger change
+        $( this.util.pagesTypeSelect ).change();
+    }
+    //#endregion
+
+    //#region events
     openPageEvent() {
-        global.pages.openPage();
+        $( this.util.buttonElement ).on( this.util.clickEvent, () => {
+            const idToSearchElement = $( this.util.idSearchWrap );
+            const clientUrl         = $( this.util.clientsSelect ).val();
+            let   pageUrl           = $( this.util.pagesSelect ).find( this.util.optionSelected ).data( this.util.redirectData );
+      
+            if ( idToSearchElement.is( this.util.visibleSelector ) ) {
+                if ( $( this.util.idSearchInput ).val() !== "" ) {
+                  pageUrl = this.replaceRedirectId( pageUrl, $( this.util.idSearchInput ).val() );
+                } else {
+                  this.alert.defaultAlert( "noID", "error" );
+                  return false;
+                }
+            }
+      
+            this.alert.autoClose( "openLink", () => this.openLink( clientUrl + pageUrl ) );
+          } );
     }
+
+    replaceRedirectId( url, id ) {
+        return url.replace( "{0}", id );
+    }
+
+    openLink( link ) {
+        window.open( link, this.util.newTabEvent );
+    }
+    //#endregion
 }
 
 const global = new Global();
