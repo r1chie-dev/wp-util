@@ -4,6 +4,7 @@ class GlobalUtil {
     htmlElement = "html";
     bodyElement = "body";
     clickEvent  = "click";
+    hrefAttr    = "href";
 
     // elements
     buttonElement     = ".open-client-page";
@@ -14,6 +15,7 @@ class GlobalUtil {
     bulbModeIcon      = ".screenMode span";
     idSearchWrap      = ".id-to-search-wrap";
     idSearchInput     = ".id-to-search";
+    siteRelIcon       = "link[rel='icon']";
 
     // selectors
     lightOnClass      = "lightOn";
@@ -29,6 +31,8 @@ class GlobalUtil {
     // util
     optionForIdSearch = [ "editProduct", "editOrder", "editExtraPages", "editBoxExtraPages" ];
     newTabEvent       = "_blank";
+    darkIcon          = "assets/icons/icon-title-dark.png";
+    lighIcon          = "assets/icons/icon-title-light.png";
     
     // clients
     clientsTypeStg  = "staging";

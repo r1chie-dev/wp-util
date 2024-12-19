@@ -22,21 +22,26 @@ class Global {
     }
 
     initDarkMode() {
-        if ( this.cookies.getCookiePropertie( "darkMode" ) ) {
+        if ( this.cookies.getCookiePropertie( this.util.cookieDarkModePropertie ) ) {
             $( this.util.bulbModeIcon ).addClass( this.util.lightOnClass );
             $( this.util.htmlElement + ", " +  this.util.bodyElement ).addClass( this.util.darkModeClass );
-        } 
+            $( this.util.siteRelIcon ).attr( this.util.hrefAttr, this.util.darkIcon );
+        } else {
+            $( this.util.siteRelIcon ).attr( this.util.hrefAttr, this.util.lighIcon );
+        }
         
         $( this.util.bulbModeIcon ).on( this.util.clickEvent, ( event ) => {
             if ( $( event.currentTarget ).hasClass( this.util.lightOnClass ) ) {
                 $( event.currentTarget ).removeClass( this.util.lightOnClass );
                 $( this.util.htmlElement + ", " +  this.util.bodyElement ).removeClass( this.util.darkModeClass );
+                $( this.util.siteRelIcon ).attr( this.util.hrefAttr, this.util.lighIcon );
             } else {
                 $( event.currentTarget ).addClass( this.util.lightOnClass );
                 $( this.util.htmlElement + ", " +  this.util.bodyElement ).addClass( this.util.darkModeClass );
+                $( this.util.siteRelIcon ).attr( this.util.hrefAttr, this.util.darkIcon );
             }
 
-            this.cookies.setCookiePropertie( "darkMode", $( event.currentTarget ).hasClass( this.util.lightOnClass ) );
+            this.cookies.setCookiePropertie( this.util.cookieDarkModePropertie, $( event.currentTarget ).hasClass( this.util.lightOnClass ) );
         });
     }
 
