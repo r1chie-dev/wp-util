@@ -31,7 +31,7 @@ class Clients {
   //#region util
   getClientObject( type ) {
     let clients;
-    let allClients = this.util.getClients();
+    let allClients = this.util.getAllClients();
 
     switch ( type ) {
       case this.util.clientsTypeProd: {

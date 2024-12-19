@@ -17,6 +17,8 @@ class Pages {
     $.each( this.getPageObject( type ), ( index, page ) => {
       pagesSelect.append( "<option value='" + page.value + "' data-redirect='" + page.redirect + "'>" +  page.name + "</option>" );
     } );
+
+    pagesSelect.change();
   }
   //#endregion
 
@@ -45,7 +47,7 @@ class Pages {
   //#region util
   getPageObject( type ) {
     let pages;
-    let allPages = this.util.getPages();
+    let allPages = this.util.getAllPages();
 
     switch ( type ) {
       case this.util.pagesTypeAdmin: {
