@@ -194,7 +194,8 @@ class GlobalUtil {
         { name: "FotoGM",     redirect: "https://foto-gm.si/",                value: "fotogm" },
         { name: "Ceu-Azul",   redirect: "https://ceu-azul.pt/",               value: "ceuazul" },
         { name: "Albume",     redirect: "https://new-store.albume.co.il/",    value: "albume" },
-        { name: "Bepix",      redirect: "https://bepix.com.br/",              value: "bepix" }
+        { name: "Bepix",      redirect: "https://bepix.com.br/",              value: "bepix" },
+        { name: "Happybooks", redirect: "https://happybooks.pt/",             value: "happybooks" }
       ];
     }
     //#endregion
