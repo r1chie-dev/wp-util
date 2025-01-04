@@ -10,6 +10,8 @@ class GlobalUtil {
     select2Open = "select2:open";
     mousedown   = "mousedown";
     mouseup     = "mouseup";
+    inputEvent  = "input";
+    pasteEvent  = "paste";
 
     // elements
     buttonElement     = ".open-client-page";
@@ -17,7 +19,8 @@ class GlobalUtil {
     pagesTypeSelect   = "#pages-type-select";
     clientsSelect     = "#clients-select";
     clientsTypeSelect = "#clients-type-select";
-    bulbModeIcon      = ".screenMode span";
+    bulbModeIcon      = ".dark-mode-icon";
+    resetFormIcon     = ".reset-form-icon";
     idSearchWrap      = ".id-to-search-wrap";
     idSearchInput     = ".id-to-search";
     siteRelIcon       = "link[rel='icon']";
@@ -41,6 +44,7 @@ class GlobalUtil {
     darkIcon          = "assets/icons/icon-title-dark.png";
     lighIcon          = "assets/icons/icon-title-light.png";
     fullSelectWidth   = "100%";
+    clipboardGetText  = "text";
     
     // clients
     clientsTypeStg  = "staging";

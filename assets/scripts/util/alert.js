@@ -1,6 +1,7 @@
 class Alert {
 
     defaultCloseTime = 500;
+
     alertMessages   = {
         noID: {
             title:      "NO ID INSERTED",
@@ -14,9 +15,10 @@ class Alert {
 
     defaultAlert( messageType, type ) {
         Swal.fire({
-            icon:   type,
-            title:  this.alertMessages[messageType].title,
-            text:   this.alertMessages[messageType].message
+            icon:       type,
+            title:      this.alertMessages[messageType].title,
+            text:       this.alertMessages[messageType].message,
+            heightAuto: false,
         });
     }
 
@@ -24,15 +26,18 @@ class Alert {
         let timerInterval;
 
         Swal.fire({
-            title: this.alertMessages[messageType].title,
-            html: this.alertMessages[messageType].message,
-            timer: timer,
-            timerProgressBar: true,
+            title:              this.alertMessages[messageType].title,
+            html:               this.alertMessages[messageType].message,
+            timer:              timer,
+            timerProgressBar:   true,
+            heightAuto:         false,
             didOpen: () => {
                 Swal.showLoading();
+
                 const timer = Swal.getPopup().querySelector("b");
+
                 timerInterval = setInterval(() => {
-                timer.textContent = `${Swal.getTimerLeft()}`;
+                    timer.textContent = `${Swal.getTimerLeft()}`;
                 }, 100);
             },
             willClose: () => {
@@ -41,7 +46,6 @@ class Alert {
             }
         }).then((result) => {
             if (result.dismiss === Swal.DismissReason.timer) {
-              console.log("I was closed by the timer");
               callback();
             }
           });

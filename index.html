@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon"        href=""  sizes="512x512">
-    <link rel="preconnect"  href="https://fonts.gstatic.com"    crossorigin>
-    <link rel="preconnect"  href="https://fonts.googleapis.com">
-    <link rel="stylesheet"  href="assets/styles/global.css">
-    <link rel="stylesheet"  href="assets/styles/select2-override.css">
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"  />
+    <!-- SITE ICON -->
+    <link rel="icon" href="" sizes="512x512">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"                                            rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"  rel="stylesheet">
+    <!-- CSS LIBS -->
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" >
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" >
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/icon?family=Material+Icons" >
+    <link rel="stylesheet"  href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap" >
+
+    <!-- CSS -->
+    <link rel="preconnect"  href="https://fonts.gstatic.com" crossorigin >
+    <link rel="preconnect"  href="https://fonts.googleapis.com" >
+    <link rel="stylesheet"  href="assets/styles/global.css" >
+    <link rel="stylesheet"  href="assets/styles/select2-override.css" >
     
+    <!-- JS LIBS -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <!-- JS -->
     <script src="assets/scripts/util/global-util.js"></script>
     <script src="assets/scripts/util/cookies.js"></script>
     <script src="assets/scripts/util/alert.js"></script>
@@ -29,39 +35,44 @@
     <title>Util</title>
 </head>
 <body>
-    <div class="form-wrapper">
-        <span class="material-icons">find_in_page</span>
-
-        <div>
-            <label>Client Type</label>
-            <select id="clients-type-select" mame="clients-type-select" class="clients-type-select select-choices"></select>
+    <div class="navbar">
+        <div class="navbar-title"><a href="javascript:window.location.reload();">WordPress Util</a></div>
+        <div class="navbar-actions">
+            <span class="material-icons md-48 dark-mode-icon" title="Dark Mode">lightbulb</span>
+            <span class="material-icons md-48 reset-form-icon" title="Reset Form">restart_alt</span>
         </div>
-
-        <div>
-            <label>Client</label>
-            <select id="clients-select" name="clients-select" class="clients-select select-choices"></select>
-        </div>
-
-        <div>
-            <label>Pages Type</label>
-            <select id="pages-type-select" name="pages-type-select" class="pages-type-select select-choices"></select>
-        </div>
-
-        <div>
-            <label>Page</label>
-            <select id="pages-select" name="pages-select" class="pages-select select-choices"></select>
-        </div>
-
-        <div class="id-to-search-wrap hidden">
-            <label>ID</label>
-            <input type="text" id="id-to-search" class="id-to-search" value="" />
-        </div>
-
-        <button type="button" class="open-client-page">OPEN</button>
     </div>
-
-    <div class="screenMode">
-        <span class="material-icons md-48">lightbulb</span>
+    <div class="site-content">
+        <div class="form-wrapper">
+            <span class="material-icons">find_in_page</span>
+    
+            <div>
+                <label>Client Type</label>
+                <select id="clients-type-select" mame="clients-type-select" class="clients-type-select select-choices"></select>
+            </div>
+    
+            <div>
+                <label>Client</label>
+                <select id="clients-select" name="clients-select" class="clients-select select-choices"></select>
+            </div>
+    
+            <div>
+                <label>Pages Type</label>
+                <select id="pages-type-select" name="pages-type-select" class="pages-type-select select-choices"></select>
+            </div>
+    
+            <div>
+                <label>Page</label>
+                <select id="pages-select" name="pages-select" class="pages-select select-choices"></select>
+            </div>
+    
+            <div class="id-to-search-wrap hidden">
+                <label>ID</label>
+                <input type="text" id="id-to-search" class="id-to-search" value="" />
+            </div>
+    
+            <button type="button" class="open-client-page">OPEN</button>
+        </div>
     </div>
 </body>
 </html>

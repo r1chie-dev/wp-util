@@ -1,4 +1,5 @@
 :root {
+    --font-family: "Funnel Sans", sans-serif;
     --primary-color: #374254;
     --secondary-color: #ECECEC;
     --white-color: #FFFFFF;
@@ -8,7 +9,7 @@
 }
 
 html, body {
-    font-family: "Funnel Sans", sans-serif;
+    font-family: var(--font-family);
     font-optical-sizing: auto;
     font-weight: normal;
     font-style: normal;
@@ -17,9 +18,37 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-color);
+}
+
+.navbar {
+    display: flex;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--primary-color);
+    height: 70px;
+    color: var(--white-color);
+    font-size: 25px;
+    box-shadow: 0 3px 17px 7px rgb(0 0 0 / 19%);
+}
+
+.navbar-title a {
+    text-decoration: none;
+    color: var(--white-color);
+}
+
+.navbar-title a:hover {
+    text-decoration: underline;
+}
+
+.site-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
     justify-content: center;
-    background-color: var(--secondary-color);
 }
 
 .hidden {
@@ -97,21 +126,9 @@ div.form-wrapper div input:focus {
     outline: none;
 }
 
-.screenMode {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px;
-}
-
-.screenMode span {
-    font-size: 70px;
-    color: var(--primary-color);;
+.dark-mode-icon, .reset-form-icon {
+    font-size: 35px;
     cursor: pointer;
-}
-
-.screenMode span.lightOn {
-    color: var(--secondary-color);
 }
 
 .darkMode {
@@ -123,7 +140,5 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
 }
 
 @media ( max-width: 550px ) {
-    .screenMode {
-        left: auto;
-    }
+    
 }

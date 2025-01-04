@@ -34,4 +34,10 @@ class Cookies {
         this.setCookie( currentCookie );
     }
     //#endregion
+
+    //#region reset
+    resetCookie() {
+        localStorage.removeItem( this.util.cookieUserConfig );
+    }
+    //#endregion
 }

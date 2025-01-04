@@ -10,9 +10,11 @@ class Global {
         $(document).ready( () => {
             this.initCookies();
             this.initDarkMode();
+            this.initResetForm();
             this.initClientsType();
             this.initPagesType();
             this.initChoicesLib();
+            this.initRegex();
             this.openPageEvent();
         });
     }
@@ -46,6 +48,13 @@ class Global {
         });
     }
 
+    initResetForm() {
+        $( this.util.resetFormIcon ).on( this.util.clickEvent, () => {
+            this.cookies.resetCookie();
+            location.reload();
+        });
+    }
+
     initClientsType() {
         this.clients.buildTypesHtml();
 
@@ -76,6 +85,19 @@ class Global {
                 }, 0);
             });
         } );
+    }
+    
+    initRegex() {
+        // field id
+        $( this.util.idSearchInput ).on( this.util.inputEvent, ( event ) => {
+            $(event.currentTarget).val( $(event.currentTarget).val().replace(/[^\d]/g, "") );
+        }).on( this.util.pasteEvent, (e) => {
+            const pastedData = e.originalEvent.clipboardData.getData( this.util.clipboardGetText );
+            const cleanedData = pastedData.replace(/[^\d]/g, '');
+            
+            e.preventDefault();
+            $(e.currentTarget).val(cleanedData);
+        });
     }
     //#endregion
 
