@@ -12,6 +12,7 @@ class Global {
             this.initDarkMode();
             this.initClientsType();
             this.initPagesType();
+            this.initChoicesLib();
             this.openPageEvent();
         });
     }
@@ -59,6 +60,22 @@ class Global {
         this.pages.pageTypeChange();
 
         $( this.util.pagesTypeSelect ).change();
+    }
+
+    initChoicesLib() {
+        $( this.util.allSelectFields ).each( ( index, element ) => {
+            $(element).select2({
+                width: this.util.fullSelectWidth
+            }).on( this.util.select2Open, () => {
+                setTimeout( () => {
+                    const searchField = document.querySelector( this.util.select2Search );
+                    
+                    searchField.dispatchEvent( new MouseEvent( this.util.mousedown, { bubbles: true } ) );
+                    searchField.dispatchEvent( new MouseEvent( this.util.mouseup, { bubbles: true } ) );
+                    searchField.focus();
+                }, 0);
+            });
+        } );
     }
     //#endregion
 

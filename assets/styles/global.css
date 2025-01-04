@@ -4,6 +4,7 @@
     --white-color: #FFFFFF;
     --text-color: #0E1424;
     --button-shadow-color: #ABABAB3B;
+    --border-radius: 5px;
 }
 
 html, body {
@@ -29,21 +30,6 @@ span {
     user-select: none;
 }
 
-select {
-    width: 100%;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    color: var(--primary-color);
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-select:focus {
-    outline: none;
-}
-
 .form-wrapper {
     width: 500px;
     display: flex;
@@ -52,7 +38,7 @@ select:focus {
     background: var(--primary-color);
     padding: 20px;
     margin: 20px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     color: var(--secondary-color);
     text-transform: uppercase;
     font-weight: bold;
@@ -84,7 +70,7 @@ div.form-wrapper div label{
 div.form-wrapper div input {
     width: -webkit-fill-available;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 0;
     color: var(--primary-color);
     font-weight: bold;
@@ -93,7 +79,7 @@ div.form-wrapper div input {
 div.form-wrapper button.open-client-page {
     padding: 10px;
     margin: 10px 0;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid var(--secondary-color);
     background: var(--secondary-color);
     color: var(--primary-color);;

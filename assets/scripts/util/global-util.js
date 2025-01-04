@@ -5,6 +5,11 @@ class GlobalUtil {
     bodyElement = "body";
     clickEvent  = "click";
     hrefAttr    = "href";
+    
+    //events
+    select2Open = "select2:open";
+    mousedown   = "mousedown";
+    mouseup     = "mouseup";
 
     // elements
     buttonElement     = ".open-client-page";
@@ -16,6 +21,8 @@ class GlobalUtil {
     idSearchWrap      = ".id-to-search-wrap";
     idSearchInput     = ".id-to-search";
     siteRelIcon       = "link[rel='icon']";
+    allSelectFields   = ".select-choices";
+    select2Search     = ".select2-search__field";
 
     // selectors
     lightOnClass      = "lightOn";
@@ -33,6 +40,7 @@ class GlobalUtil {
     newTabEvent       = "_blank";
     darkIcon          = "assets/icons/icon-title-dark.png";
     lighIcon          = "assets/icons/icon-title-light.png";
+    fullSelectWidth   = "100%";
     
     // clients
     clientsTypeStg  = "staging";
