@@ -139,6 +139,19 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
     background-color: var(--primary-color) !important;
 }
 
-@media ( max-width: 550px ) {
-    
+.select2-results__options::-webkit-scrollbar {
+    width: 10px;
+}
+
+.select2-results__options::-webkit-scrollbar-track {
+    background: #dddddd;
+}
+
+.select2-results__options::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+}
+
+.select2-results__options::-webkit-scrollbar-thumb:hover {
+    border-radius: var(--border-radius);
+    transition: width 2s;
 }

@@ -92,16 +92,20 @@ class GlobalUtil {
 
     getAdminPages() {
       return [
-        { name: "Admin",                redirect: "wp-admin/",                                    value: "admin" },
-        { name: "Custom Fields",        redirect: "wp-admin/admin.php?page=wapf-field-groups",    value: "customFields" },
-        { name: "New Custom Field",     redirect: "wp-admin/post-new.php?post_type=wapf_product", value: "newCustomField" },
-        { name: "Products",             redirect: "wp-admin/edit.php?post_type=product",          value: "products" },
-        { name: "New Product",          redirect: "wp-admin/post-new.php?post_type=product",      value: "newProduct" },
-        { name: "Edit Product",         redirect: "wp-admin/post.php?post={0}&action=edit",       value: "editProduct" },
-        { name: "Coupons",              redirect: "wp-admin/edit.php?post_type=shop_coupon",      value: "coupons" },
-        { name: "New Coupon",           redirect: "wp-admin/post-new.php?post_type=shop_coupon",  value: "newCoupon" },
-        { name: "Orders",               redirect: "wp-admin/edit.php?post_type=shop_order",       value: "orders" },
-        { name: "See Order",            redirect: "wp-admin/post.php?post={0}&action=edit",       value: "editOrder" }
+        { name: "Admin",                  redirect: "wp-admin/",                                                    value: "admin" },
+        { name: "Plugins",                redirect: "wp-admin/plugins.php",                                         value: "plugins" },
+        { name: "New Plugin",             redirect: "wp-admin/plugin-install.php",                                  value: "newPlugin" },
+        { name: "WooCommerce Attributes", redirect: "wp-admin/edit.php?post_type=product&page=product_attributes",  value: "wcAttributes" },
+        { name: "WooCommerce Settings",   redirect: "wp-admin/admin.php?page=wc-settings",                          value: "wcSettings" },
+        { name: "Custom Fields",          redirect: "wp-admin/admin.php?page=wapf-field-groups",                    value: "customFields" },
+        { name: "New Custom Field",       redirect: "wp-admin/post-new.php?post_type=wapf_product",                 value: "newCustomField" },
+        { name: "Products",               redirect: "wp-admin/edit.php?post_type=product",                          value: "products" },
+        { name: "New Product",            redirect: "wp-admin/post-new.php?post_type=product",                      value: "newProduct" },
+        { name: "Edit Product",           redirect: "wp-admin/post.php?post={0}&action=edit",                       value: "editProduct" },
+        { name: "Coupons",                redirect: "wp-admin/edit.php?post_type=shop_coupon",                      value: "coupons" },
+        { name: "New Coupon",             redirect: "wp-admin/post-new.php?post_type=shop_coupon",                  value: "newCoupon" },
+        { name: "Orders",                 redirect: "wp-admin/edit.php?post_type=shop_order",                       value: "orders" },
+        { name: "See Order",              redirect: "wp-admin/post.php?post={0}&action=edit",                       value: "editOrder" }
       ];
     }
 
@@ -182,7 +186,7 @@ class GlobalUtil {
 
     getAllClients() {
       return {
-          "Staging": this.getStagingClients(),
+          "Staging":    this.getStagingClients(),
           "Production": this.getProductionClients()
         }
     }
