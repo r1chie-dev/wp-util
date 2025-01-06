@@ -26,10 +26,28 @@
 
 .select2-results__option--selectable {
     background-color: var(--white-color) !important;
-    color: var(--text-color) !important;
+    color: var(--primary-color) !important;
 }
 
 .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
     background-color: var(--primary-color) !important;
     color: var(--white-color) !important;
+}
+
+.select2-results__option.select2-results__message {
+    color: var(--primary-color);
+}
+
+.select2-results__options::-webkit-scrollbar {
+    width: 10px;
+    border-radius: var(--border-radius);
+}
+
+.select2-results__options::-webkit-scrollbar-track {
+    background: #dddddd;
+}
+
+.select2-results__options::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: var(--border-radius);
 }
