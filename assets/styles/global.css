@@ -34,7 +34,7 @@ html, body {
     box-shadow: 0 3px 17px 7px rgb(0 0 0 / 19%);
 }
 
-.navbar-title a {
+a {
     text-decoration: none;
     color: var(--white-color);
 }
@@ -126,7 +126,7 @@ div.form-wrapper div input:focus {
     outline: none;
 }
 
-.dark-mode-icon, .reset-form-icon {
+.dark-mode-icon, .reset-form-icon, .favorites-icon {
     font-size: 35px;
     cursor: pointer;
 }
