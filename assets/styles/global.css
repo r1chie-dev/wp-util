@@ -18,25 +18,39 @@ html, body {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: var(--secondary-color);
-}
-
-.navbar {
-    display: flex;
-    padding: 0 20px;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--primary-color);
-    height: 70px;
-    color: var(--white-color);
-    font-size: 25px;
-    box-shadow: 0 3px 17px 7px rgb(0 0 0 / 19%);
 }
 
 a {
     text-decoration: none;
     color: var(--white-color);
+}
+
+span {
+    user-select: none;
+}
+
+.navbar {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--primary-color);
+    width: 45px;
+    height: auto;
+    color: var(--white-color);
+    font-size: 25px;
+    box-shadow: 3px 0 17px 7px rgb(0 0 0 / 19%);
+}
+
+.navbar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar-title a:hover {
@@ -55,9 +69,6 @@ a {
     display: none !important;
 }
 
-span {
-    user-select: none;
-}
 
 .form-wrapper {
     width: 500px;
@@ -129,6 +140,13 @@ div.form-wrapper div input:focus {
 .dark-mode-icon, .reset-form-icon, .favorites-icon {
     font-size: 35px;
     cursor: pointer;
+    border-radius: 50px;
+    padding: 5px;
+}
+
+.dark-mode-icon:hover, .reset-form-icon:hover, .favorites-icon:hover {
+    background-color: var(--white-color);
+    color: var(--primary-color);
 }
 
 .darkMode {
