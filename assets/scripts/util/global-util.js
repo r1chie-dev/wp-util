@@ -204,14 +204,16 @@ class GlobalUtil {
 
     getProductionClients() {
       return [
-        { name: "Demo",       redirect: "https://store-demo.sunpics.online/", value: "demo" },
-        { name: "My Album ",  redirect: "https://myalbum.co.il/",             value: "myalbum" },
-        { name: "Profox",     redirect: "https://profoxprofissional.com.br/", value: "profox" },
-        { name: "FotoGM",     redirect: "https://foto-gm.si/",                value: "fotogm" },
-        { name: "Ceu-Azul",   redirect: "https://ceu-azul.pt/",               value: "ceuazul" },
-        { name: "Albume",     redirect: "https://new-store.albume.co.il/",    value: "albume" },
-        { name: "Bepix",      redirect: "https://bepix.com.br/",              value: "bepix" },
-        { name: "Happybooks", redirect: "https://happybooks.pt/",             value: "happybooks" }
+        { name: "Demo",                     redirect: "https://store-demo.sunpics.online/",                     value: "demo" },
+        { name: "My Album ",                redirect: "https://myalbum.co.il/",                                 value: "myalbum" },
+        { name: "Profox",                   redirect: "https://profoxprofissional.com.br/",                     value: "profox" },
+        { name: "FotoGM",                   redirect: "https://foto-gm.si/",                                    value: "fotogm" },
+        { name: "Ceu-Azul",                 redirect: "https://ceu-azul.pt/",                                   value: "ceuazul" },
+        { name: "Albume",                   redirect: "https://new-store.albume.co.il/",                        value: "albume" },
+        { name: "Bepix",                    redirect: "https://bepix.com.br/",                                  value: "bepix" },
+        { name: "Happybooks",               redirect: "https://happybooks.pt/",                                 value: "happybooks" },
+        { name: "DolceVita ( Photo Me )",   redirect: "https://store-dolcevitauaephotome-v1.sunpics.online/",   value: "dolcevitaphotome" },
+        { name: "DolceVita ( Office Me )",  redirect: "https://store-dolcevitauaeofficeme-v1.sunpics.online/",  value: "dolcevitaofficeme" },
       ];
     }
     //#endregion
